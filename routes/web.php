@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','welcome')->name('home');
+
+Route::view('/register','auth.register',['countries' => [
+    'USA' => '+1',
+    'Royaume-Uni' => '+44',
+    'France' => '+33'
+    ]])->name('register');
+
+Route::get('/logout',fn () =>
+    view('auth.login')
+)->name('logout')->middleware('auth');
+
+Route::view('/login','auth.login')->name('login');
