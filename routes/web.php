@@ -26,3 +26,15 @@ Route::get('/logout',fn () =>
 )->name('logout')->middleware('auth');
 
 Route::view('/login','auth.login')->name('login');
+
+Route::view('/traveler','luggage.traveler',['countries' => [
+    'USA' => '+1',
+    'Royaume-Uni' => '+44',
+    'France' => '+33'
+    ]])->name('traveler_registration');
+    
+Route::view('/receiver','luggage.receiver',['countries' => [
+    'USA' => '+1',
+    'Royaume-Uni' => '+44',
+    'France' => '+33'
+    ]])->name('luggage_receiver');
